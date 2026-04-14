@@ -15,6 +15,7 @@
   --color-surface-container-low: #f1f3fc;
 
   --animate-scroll-x: scroll-x 35s linear infinite;
+  --animate-wave: wave 2.5s infinite;
 }
 
 @keyframes scroll-x {
@@ -24,6 +25,17 @@
   to {
     transform: translateX(-50%);
   }
+}
+
+@keyframes wave {
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
 }
 
 @layer base {
