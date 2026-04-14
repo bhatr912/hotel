@@ -70,11 +70,15 @@ export default function Footer() {
               <div className="h-px flex-grow bg-primary/20" />
             </div>
             <ul className="space-y-4">
-              {['Privacy Policy', 'Terms and Conditions', 'Refund/Cancellation'].map((item) => (
-                <li key={item}>
-                  <Link href="#" className="text-sm font-bold text-on-surface-variant/70 hover:text-primary transition-all flex items-center gap-2 group">
+              {[
+                { name: 'Privacy Policy', href: '/privacy-policy' },
+                { name: 'Terms and Conditions', href: '/terms-and-conditions' },
+                { name: 'Refund/Cancellation', href: '#' }
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm font-bold text-on-surface-variant/70 hover:text-primary transition-all flex items-center gap-2 group">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/0 group-hover:bg-primary transition-all" />
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

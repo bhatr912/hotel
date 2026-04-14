@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Star, Clock, MapPin } from 'lucide-react';
 import { PACKAGES } from '@/lib/data';
+import PackageCard from './PackageCard';
 import BookingDialog from './BookingDialog';
 
 export default function PopularPackages() {
@@ -49,70 +50,17 @@ export default function PopularPackages() {
           onTouchEnd={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
         >
           {duplicatedPackages.map((pkg, idx) => (
-            <Link
-              href={`/packages/${pkg.id}`}
+            <PackageCard
               key={`${pkg.id}-${idx}`}
-              className="flex-shrink-0 w-[280px] bg-white rounded-[2rem] overflow-hidden shadow-lg border border-on-surface-variant/5 group hover:shadow-xl transition-all duration-500 cursor-pointer"
-            >
-              {/* Image Container */}
-              <div className="relative h-[180px] w-full overflow-hidden">
-                <Image
-                  src={pkg.image}
-                  alt={pkg.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest shadow-lg">
-                  {pkg.discount}
-                </div>
-                <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-                  <Star className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
-                  <span className="text-[9px] font-black text-on-surface">{pkg.rating}</span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5 space-y-4">
-                <div className="space-y-1.5">
-                  <h3 className="text-base font-black text-on-surface leading-tight group-hover:text-primary transition-colors line-clamp-1">
-                    {pkg.title}
-                  </h3>
-                  <div className="flex items-center gap-1.5 text-on-surface-variant/60">
-                    <MapPin className="w-2.5 h-2.5" />
-                    <span className="text-[8px] font-bold uppercase tracking-wider line-clamp-1">{pkg.location}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-on-surface-variant/60">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-medium">{pkg.duration}</span>
-                </div>
-
-                <div className="h-px bg-on-surface-variant/10 w-full" />
-
-                <div className="flex items-center justify-between gap-2">
-                  <div className="min-w-0">
-                    <p className="text-[8px] font-bold text-on-surface-variant/40 uppercase tracking-widest line-through">
-                      {pkg.originalPrice}
-                    </p>
-                    <p className="text-lg font-black text-primary truncate">
-                      {pkg.price}
-                      <span className="text-[8px] font-medium text-on-surface-variant/60 ml-1 uppercase">/ Person</span>
-                    </p>
-                  </div>
-                  <button
-                    onClick={(e) => handleBook(e, pkg)}
-                    className="bg-primary text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary/90 transition-all active:scale-95 shadow-md whitespace-nowrap cursor-pointer"
-                  >
-                    Book
-                  </button>
-                </div>
-              </div>
-            </Link>
+              pkg={pkg}
+              variant="scroll"
+              onBook={handleBook}
+              index={idx}
+            />
           ))}
         </div>
       </div>
+
 
       {/* Booking Dialog */}
       <BookingDialog

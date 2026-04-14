@@ -36,7 +36,7 @@ export default function BookingDialog({ isOpen, onClose }: BookingDialogProps) {
             <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-6 lg:p-10 relative">
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 text-on-surface-variant/40 hover:text-on-surface transition-colors"
+                className="absolute top-4 right-4 p-2 text-on-surface-variant/40 hover:text-on-surface transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -106,7 +106,7 @@ export default function BookingDialog({ isOpen, onClose }: BookingDialogProps) {
                   ></textarea>
                 </div>
 
-                <button className="w-full py-4 bg-primary hover:bg-on-surface text-white font-black rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] uppercase tracking-widest text-sm mt-4">
+                <button className="w-full py-4 bg-primary hover:bg-on-surface text-white font-black rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] uppercase tracking-widest text-sm mt-4 cursor-pointer">
                   Get Free Quote
                 </button>
               </form>

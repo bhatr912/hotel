@@ -7,6 +7,7 @@ import SeasonGuide from '@/components/SeasonGuide';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import TrendingEscapes from '@/components/TrendingEscapes';
 import Testimonials from '@/components/Testimonials';
+import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -22,6 +23,7 @@ export default function Home() {
       <SeasonGuide />
       <WhyChooseUs />
       <Testimonials />
+      <FAQ />
       <ContactSection />
       <Footer />
     </main>
