@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react';
 import { FAQ_DATA } from '@/lib/faqData';
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(1); // Defaulting to first item as per image reference
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className="py-24 bg-surface px-4 md:px-8">

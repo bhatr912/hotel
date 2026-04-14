@@ -10,7 +10,7 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
   return (
     <div className={`${compact ? 'p-6' : 'p-10'} bg-white`}>
       <div className="flex items-center gap-2 mb-6">
-        <span className="text-lg">Hi 👋</span>
+        <span className="text-lg">Hi <span className="inline-block animate-wave origin-bottom-right">👋</span></span>
         <span className="font-black text-on-surface text-sm lg:text-base">, Get Perfect Kashmir Itinerary.</span>
       </div>
 
@@ -75,7 +75,7 @@ export default function ContactForm({ compact = false }: ContactFormProps) {
           ></textarea>
         </div>
 
-        <button className="w-full py-4 bg-primary hover:bg-primary/90 text-white font-black rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] uppercase tracking-widest text-xs lg:text-sm">
+        <button className="w-full py-4 bg-primary hover:bg-primary/90 text-white font-black rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] uppercase tracking-widest text-xs lg:text-sm cursor-pointer">
           Get Free Quote
         </button>
       </form>
