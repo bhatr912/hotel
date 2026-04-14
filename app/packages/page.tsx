@@ -7,8 +7,9 @@ import Navbar from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { Star, Clock, MapPin, Filter, X, ChevronRight } from 'lucide-react';
+import { Star, Clock, MapPin, Filter, X, ChevronRight, ChevronLeft, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { PACKAGES, DESTINATIONS, CATEGORIES } from '@/lib/data';
+import PackageCard from '@/components/PackageCard';
 
 function PackagesContent() {
   const searchParams = useSearchParams();
@@ -18,6 +19,7 @@ function PackagesContent() {
   const selectedCategory = searchParams.get('category') || 'All';
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const filteredPackages = PACKAGES.filter(pkg => {
     const destMatch = selectedDestination === 'All' || pkg.destination === selectedDestination;
@@ -87,64 +89,94 @@ function PackagesContent() {
         </div>
       </section>
 
-      <section className="py-12 px-8">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
+      <section className="py-12 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12">
 
           {/* Sidebar Filters - Desktop */}
-          <aside className="hidden lg:block w-64 shrink-0 space-y-10">
-            <div>
-              <h3 className="text-sm font-black text-on-surface uppercase tracking-widest mb-6 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-primary" />
-                Destinations
-              </h3>
-              <div className="space-y-2">
-                {['All', ...DESTINATIONS.map(d => d.name)].map(destName => (
-                  <button
-                    key={destName}
-                    onClick={() => updateFilters(destName, selectedCategory)}
-                    className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${selectedDestination === destName
-                        ? 'bg-primary text-white shadow-md shadow-primary/20'
-                        : 'text-on-surface-variant hover:bg-surface-container-low'
-                      }`}
-                  >
-                    {destName}
-                  </button>
-                ))}
-              </div>
-            </div>
+          <AnimatePresence mode="wait">
+            {isSidebarOpen && (
+              <motion.aside
+                initial={{ width: 0, opacity: 0, x: -20 }}
+                animate={{ width: 256, opacity: 1, x: 0 }}
+                exit={{ width: 0, opacity: 0, x: -20 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="hidden lg:block shrink-0 space-y-10 overflow-hidden"
+              >
+                <div className="w-64">
+                  <div className="mb-10">
+                    <h3 className="text-sm font-black text-on-surface uppercase tracking-widest mb-6 flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-primary" />
+                      Destinations
+                    </h3>
+                    <div className="space-y-2">
+                      {['All', ...DESTINATIONS.map(d => d.name)].map(destName => (
+                        <button
+                          key={destName}
+                          onClick={() => updateFilters(destName, selectedCategory)}
+                          className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer ${selectedDestination === destName
+                            ? 'bg-primary text-white shadow-md shadow-primary/20'
+                            : 'text-on-surface-variant hover:bg-surface-container-low'
+                            }`}
+                        >
+                          {destName}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
-            <div>
-              <h3 className="text-sm font-black text-on-surface uppercase tracking-widest mb-6 flex items-center gap-2">
-                <Filter className="w-4 h-4 text-primary" />
-                Categories
-              </h3>
-              <div className="space-y-2">
-                {['All', ...CATEGORIES.map(c => c.name)].map(catName => (
-                  <button
-                    key={catName}
-                    onClick={() => updateFilters(selectedDestination, catName)}
-                    className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${selectedCategory === catName
-                        ? 'bg-primary text-white shadow-md shadow-primary/20'
-                        : 'text-on-surface-variant hover:bg-surface-container-low'
-                      }`}
-                  >
-                    {catName}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
+                  <div>
+                    <h3 className="text-sm font-black text-on-surface uppercase tracking-widest mb-6 flex items-center gap-2">
+                      <Filter className="w-4 h-4 text-primary" />
+                      Categories
+                    </h3>
+                    <div className="space-y-2">
+                      {['All', ...CATEGORIES.map(c => c.name)].map(catName => (
+                        <button
+                          key={catName}
+                          onClick={() => updateFilters(selectedDestination, catName)}
+                          className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-all cursor-pointer ${selectedCategory === catName
+                            ? 'bg-primary text-white shadow-md shadow-primary/20'
+                            : 'text-on-surface-variant hover:bg-surface-container-low'
+                            }`}
+                        >
+                          {catName}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.aside>
+            )}
+          </AnimatePresence>
 
           {/* Packages Grid */}
           <div className="flex-1">
             <div className="mb-8 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="hidden lg:flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-on-surface-variant/5 font-black text-[10px] uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all group cursor-pointer"
+              >
+                {isSidebarOpen ? (
+                  <>
+                    <PanelLeftClose className="w-3.5 h-3.5" />
+                    Hide Filters
+                  </>
+                ) : (
+                  <>
+                    <PanelLeftOpen className="w-3.5 h-3.5" />
+                    Show Filters
+                  </>
+                )}
+              </button>
               <p className="text-sm font-medium text-on-surface-variant">
                 Showing <span className="text-on-surface font-black">{filteredPackages.length}</span> packages
               </p>
+            </div>
               {(selectedDestination !== 'All' || selectedCategory !== 'All') && (
                 <button
                   onClick={() => updateFilters('All', 'All')}
-                  className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline"
+                  className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline cursor-pointer"
                 >
                   Clear All Filters
                 </button>
@@ -152,88 +184,21 @@ function PackagesContent() {
             </div>
 
             {filteredPackages.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className={`grid gap-8 ${isSidebarOpen
+                  ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'
+                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                }`}>
                 <AnimatePresence mode="popLayout">
                   {filteredPackages.map((pkg) => (
-                    <motion.div
+                    <PackageCard
                       key={pkg.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.4 }}
-                      className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-on-surface-variant/5 group hover:shadow-xl transition-all duration-500"
-                    >
-                      {/* Image Container */}
-                      <div className="relative h-[220px] w-full overflow-hidden">
-                        <Image
-                          src={pkg.image}
-                          alt={pkg.title}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                          referrerPolicy="no-referrer"
-                        />
-                        <div className="absolute top-4 left-4 bg-primary text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg">
-                          {pkg.discount}
-                        </div>
-                        <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
-                          <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                          <span className="text-xs font-black text-on-surface">{pkg.rating}</span>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-4 lg:p-6 space-y-3 lg:space-y-4">
-                        <div className="space-y-1 lg:space-y-1.5">
-                          <div className="flex items-center gap-2 text-primary font-black text-[8px] lg:text-[9px] uppercase tracking-widest">
-                            <span>{pkg.category}</span>
-                            <span className="w-1 h-1 rounded-full bg-primary/30" />
-                            <span>{pkg.destination}</span>
-                          </div>
-                          <h3 className="text-base lg:text-lg font-black text-on-surface leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                            {pkg.title}
-                          </h3>
-                          <div className="flex items-center gap-1.5 text-on-surface-variant/60">
-                            <MapPin className="w-2.5 h-2.5 lg:w-3 lg:h-3" />
-                            <span className="text-[8px] lg:text-[9px] font-bold uppercase tracking-wider">{pkg.location}</span>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-2.5 lg:gap-3 text-on-surface-variant/60">
-                          <Clock className="w-3 h-3 lg:w-3.5 lg:h-3.5" />
-                          <span className="text-[10px] lg:text-[11px] font-medium">{pkg.duration}</span>
-                        </div>
-
-                        <div className="h-px bg-on-surface-variant/10 w-full" />
-
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-1.5">
-                            <div>
-                              <p className="text-[8px] lg:text-[9px] font-bold text-on-surface-variant/40 uppercase tracking-widest line-through mb-0.5">
-                                {pkg.originalPrice}
-                              </p>
-                              <div className="flex items-baseline gap-1">
-                                <p className="text-base lg:text-lg font-black text-primary leading-none">
-                                  {pkg.price}
-                                </p>
-                                <span className="text-[8px] lg:text-[9px] font-black text-on-surface-variant/40 uppercase tracking-widest leading-none">
-                                  / Person
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <Link
-                            href={`/packages/${pkg.id}`}
-                            className="bg-primary text-white px-5 lg:px-6 py-2.5 rounded-xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:bg-on-surface transition-all active:scale-95 shadow-lg shadow-primary/20 whitespace-nowrap shrink-0"
-                          >
-                            View
-                          </Link>
-                        </div>
-                      </div>
-                    </motion.div>
+                      pkg={pkg}
+                      variant="grid"
+                    />
                   ))}
                 </AnimatePresence>
               </div>
+
             ) : (
               <div className="py-20 text-center">
                 <div className="w-20 h-20 bg-surface-container-low rounded-full flex items-center justify-center mx-auto mb-6">
@@ -283,7 +248,7 @@ function PackagesContent() {
                           updateFilters(destName, selectedCategory);
                           setIsFilterOpen(false);
                         }}
-                        className={`px-4 py-3 rounded-xl text-xs font-black transition-all border ${selectedDestination === destName
+                        className={`px-4 py-3 rounded-xl text-xs font-black transition-all border cursor-pointer ${selectedDestination === destName
                             ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
                             : 'text-on-surface-variant border-on-surface-variant/10'
                           }`}
@@ -304,7 +269,7 @@ function PackagesContent() {
                           updateFilters(selectedDestination, catName);
                           setIsFilterOpen(false);
                         }}
-                        className={`px-4 py-3 rounded-xl text-xs font-black transition-all border ${selectedCategory === catName
+                        className={`px-4 py-3 rounded-xl text-xs font-black transition-all border cursor-pointer ${selectedCategory === catName
                             ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
                             : 'text-on-surface-variant border-on-surface-variant/10'
                           }`}
