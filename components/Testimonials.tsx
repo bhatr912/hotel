@@ -30,7 +30,7 @@ const REVIEWS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-white">
+    <section id="testimonials" className="py-24 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header Section - Matching common pattern */}
         <div className="flex flex-col items-center text-center mb-20">

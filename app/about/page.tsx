@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from 'motion/react';
 import { Heart, Shield, Users, Map, Compass, Award } from 'lucide-react';
@@ -34,7 +34,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-surface">
       <Navbar />
-      
+
       {/* Hero Section - Matching common pattern */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden bg-surface-container-lowest">
         <div className="max-w-7xl mx-auto px-8 w-full">
@@ -71,7 +71,7 @@ export default function AboutPage() {
                 <div className="absolute top-8 right-8 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30">
                   <span className="text-[10px] font-black text-white uppercase tracking-widest">100% Customised Package</span>
                 </div>
-                
+
                 <div className="relative z-10">
                   <h3 className="text-7xl lg:text-8xl font-headline font-black text-white leading-[0.8] mb-4">
                     WHO<br />

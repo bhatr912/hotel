@@ -9,7 +9,7 @@ import { CATEGORIES } from '@/lib/data';
 
 export default function CategoryPackages() {
   return (
-    <section className="py-24 bg-surface-container-lowest overflow-hidden">
+    <section id="category" className="py-24 bg-surface-container-lowest overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-20">
@@ -29,7 +29,7 @@ export default function CategoryPackages() {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 lg:gap-x-6 gap-y-8 lg:gap-y-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-4 lg:gap-x-6 gap-y-8 lg:gap-y-12">
           {CATEGORIES.map((cat, index) => {
             const isImageTop = index % 2 === 0;
             return (
@@ -44,7 +44,7 @@ export default function CategoryPackages() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   whileHover={{ y: -10 }}
-                  className="bg-white rounded-[60px] lg:rounded-[100px] p-4 lg:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-on-surface-variant/5 flex flex-col items-center text-center transition-all duration-500 h-full"
+                  className="bg-white rounded-[60px] lg:rounded-[100px] p-4 lg:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-on-surface-variant/5 flex flex-col items-center text-center transition-all duration-500 h-full"
                 >
                   {isImageTop ? (
                     <>

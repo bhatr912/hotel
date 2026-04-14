@@ -1,15 +1,25 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star, Clock, MapPin } from 'lucide-react';
 import { PACKAGES } from '@/lib/data';
+import BookingDialog from './BookingDialog';
 
 export default function PopularPackages() {
+  const [selectedPackage, setSelectedPackage] = useState<typeof PACKAGES[0] | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   // Duplicate packages for infinite scroll
   const duplicatedPackages = [...PACKAGES, ...PACKAGES];
+
+  const handleBook = (e: React.MouseEvent, pkg: typeof PACKAGES[0]) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedPackage(pkg);
+    setIsDialogOpen(true);
+  };
 
   return (
     <section className="py-20 bg-surface-container-lowest overflow-hidden">
@@ -33,24 +43,16 @@ export default function PopularPackages() {
 
       {/* Infinite Scroll Container */}
       <div className="relative flex">
-        <motion.div 
-          className="flex gap-6 px-4"
-          animate={{
-            x: [0, -1500], // Adjusted for smaller card width
-          }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 35,
-              ease: "linear",
-            },
-          }}
+        <div
+          className="flex gap-6 px-4 animate-scroll-x hover:[animation-play-state:paused]"
+          onTouchStart={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
+          onTouchEnd={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
         >
           {duplicatedPackages.map((pkg, idx) => (
-            <div 
+            <Link
+              href={`/packages/${pkg.id}`}
               key={`${pkg.id}-${idx}`}
-              className="flex-shrink-0 w-[280px] bg-white rounded-[2rem] overflow-hidden shadow-lg border border-on-surface-variant/5 group hover:shadow-xl transition-all duration-500"
+              className="flex-shrink-0 w-[280px] bg-white rounded-[2rem] overflow-hidden shadow-lg border border-on-surface-variant/5 group hover:shadow-xl transition-all duration-500 cursor-pointer"
             >
               {/* Image Container */}
               <div className="relative h-[180px] w-full overflow-hidden">
@@ -65,7 +67,7 @@ export default function PopularPackages() {
                   {pkg.discount}
                 </div>
                 <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-md px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
-                  <Star className="w-2.5 h-2.5 fill-cyan-vibrant text-cyan-vibrant" />
+                  <Star className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
                   <span className="text-[9px] font-black text-on-surface">{pkg.rating}</span>
                 </div>
               </div>
@@ -99,18 +101,31 @@ export default function PopularPackages() {
                       <span className="text-[8px] font-medium text-on-surface-variant/60 ml-1 uppercase">/ Person</span>
                     </p>
                   </div>
-                  <Link 
-                    href={`/packages/${pkg.id}`}
-                    className="bg-primary text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-on-surface transition-all active:scale-95 shadow-md whitespace-nowrap"
+                  <button
+                    onClick={(e) => handleBook(e, pkg)}
+                    className="bg-primary text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary/90 transition-all active:scale-95 shadow-md whitespace-nowrap cursor-pointer"
                   >
                     Book
-                  </Link>
+                  </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
-        </motion.div>
+        </div>
       </div>
+
+      {/* Booking Dialog */}
+      <BookingDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        packageData={selectedPackage ? {
+          title: selectedPackage.title,
+          destination: selectedPackage.destination,
+          duration: selectedPackage.duration,
+          price: selectedPackage.price,
+          rating: selectedPackage.rating,
+        } : null}
+      />
     </section>
   );
 }

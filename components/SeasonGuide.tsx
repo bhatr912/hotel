@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calendar, Flower2, Sun, Leaf, Snowflake } from 'lucide-react';
+import BookingDialog from './BookingDialog';
 
 const SEASONS = [
   {
@@ -40,6 +41,8 @@ const SEASONS = [
 ];
 
 export default function SeasonGuide() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-8">
@@ -91,11 +94,22 @@ export default function SeasonGuide() {
         </div>
 
         <div className="flex justify-center">
-          <button className="bg-primary text-white px-12 py-5 rounded-full font-black text-sm tracking-widest uppercase hover:bg-on-surface transition-all duration-300 shadow-2xl shadow-primary/20 active:scale-95">
+          <button 
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-primary text-white px-12 py-5 rounded-full font-black text-sm tracking-widest uppercase hover:opacity-90 transition-all duration-300 shadow-2xl shadow-primary/20 active:scale-95 cursor-pointer"
+          >
             Plan My Kashmir Trip
           </button>
         </div>
       </div>
+
+      <BookingDialog 
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        packageData={{
+          title: "Custom Kashmir Trip Plan"
+        }}
+      />
     </section>
   );
 }

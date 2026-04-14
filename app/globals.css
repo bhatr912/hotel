@@ -13,9 +13,23 @@
   --color-on-surface: #181c22;
   --color-on-surface-variant: #404752;
   --color-surface-container-low: #f1f3fc;
+
+  --animate-scroll-x: scroll-x 35s linear infinite;
+}
+
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-surface text-on-surface font-sans;
   }
