@@ -1,20 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { motion } from 'motion/react';
+import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  Star, 
-  Clock, 
-  MapPin, 
-  CheckCircle2, 
-  XCircle, 
-  Calendar, 
-  ChevronLeft, 
-  Share2, 
+import Navbar from '@/components/Header';
+import Footer from '@/components/Footer';
+import BookingDialog from '@/components/BookingDialog';
+import { motion } from 'motion/react';
+import {
+  Star,
+  Clock,
+  MapPin,
+  CheckCircle2,
+  XCircle,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Share2,
   Heart,
   ShieldCheck,
   Zap
@@ -25,6 +28,7 @@ export default function PackageDetailPage() {
   const params = useParams();
   const router = useRouter();
   const id = Number(params.id);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const pkg = PACKAGES.find(p => p.id === id);
 
@@ -32,7 +36,7 @@ export default function PackageDetailPage() {
     return (
       <div className="min-h-screen bg-surface flex flex-col items-center justify-center p-8">
         <h1 className="text-4xl font-serif text-on-surface mb-4">Package Not Found</h1>
-        <button 
+        <button
           onClick={() => router.push('/packages')}
           className="bg-primary text-white px-8 py-3 rounded-2xl font-black uppercase tracking-widest"
         >
@@ -56,8 +60,33 @@ export default function PackageDetailPage() {
           priority
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent" />
-        
+        <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-black/40" />
+
+        {/* Breadcrumb over hero */}
+        <div className="absolute top-24 left-0 right-0 px-4 md:px-8 lg:px-16 z-10">
+          <div className="max-w-7xl mx-auto">
+            <nav className="flex items-center gap-1.5 overflow-x-auto no-scrollbar whitespace-nowrap">
+              <Link href="/" className="text-white/60 hover:text-white transition-colors text-xs font-bold tracking-wide">
+                Home
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-white/30 shrink-0" />
+              <Link href="/packages" className="text-white/60 hover:text-white transition-colors text-xs font-bold tracking-wide">
+                Packages
+              </Link>
+              {pkg.destination && (
+                <>
+                  <ChevronRight className="w-3.5 h-3.5 text-white/30 shrink-0" />
+                  <Link href={`/packages?destination=${encodeURIComponent(pkg.destination)}`} className="text-white/60 hover:text-white transition-colors text-xs font-bold tracking-wide">
+                    {pkg.destination}
+                  </Link>
+                </>
+              )}
+              <ChevronRight className="w-3.5 h-3.5 text-white/30 shrink-0" />
+              <span className="text-white text-xs font-bold tracking-wide">{pkg.title}</span>
+            </nav>
+          </div>
+        </div>
+
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
           <div className="max-w-7xl mx-auto">
             <motion.div
@@ -66,7 +95,7 @@ export default function PackageDetailPage() {
               className="space-y-6"
             >
               <div className="flex items-center gap-3">
-                <button 
+                <button
                   onClick={() => router.back()}
                   className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-primary transition-all"
                 >
@@ -91,7 +120,7 @@ export default function PackageDetailPage() {
                   <span className="font-bold uppercase tracking-wider text-sm">{pkg.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 fill-primary text-primary" />
+                  <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                   <span className="font-black text-lg">{pkg.rating}</span>
                 </div>
               </div>
@@ -103,7 +132,7 @@ export default function PackageDetailPage() {
       {/* Content Section */}
       <section className="py-16 px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
-          
+
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-16">
             {/* Overview */}
@@ -215,7 +244,10 @@ export default function PackageDetailPage() {
                   </div>
                 </div>
 
-                <button className="w-full bg-primary text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-on-surface transition-all active:scale-95 shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
+                <button
+                  onClick={() => setIsDialogOpen(true)}
+                  className="w-full bg-primary text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-on-surface transition-all active:scale-95 shadow-xl shadow-primary/20 flex items-center justify-center gap-3 cursor-pointer"
+                >
                   Book This Package
                 </button>
 
@@ -247,6 +279,18 @@ export default function PackageDetailPage() {
       </section>
 
       <Footer />
+
+      <BookingDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        packageData={pkg ? {
+          title: pkg.title,
+          destination: pkg.destination,
+          duration: pkg.duration,
+          price: pkg.price,
+          rating: pkg.rating,
+        } : null}
+      />
     </main>
   );
 }

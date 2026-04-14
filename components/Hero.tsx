@@ -20,7 +20,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    bgImage: "https://images.unsplash.com/photo-1622646148782-63d9f73bc197?q=80&w=2070&auto=format&fit=crop",
+    bgImage: "https://images.unsplash.com/photo-1590695127027-3134fb332c9d?q=80&w=2070&auto=format&fit=crop",
     title: "PAHALGAM\nVALLEY OF\nSHEPHERDS.",
     subtitle: "Walk through the lush green meadows and pine forests where the Lidder river sings. A true heaven for nature lovers.",
     cardTitle: "Lidder Valley Retreat",
@@ -107,7 +107,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <button className="bg-white text-primary px-10 py-4 rounded-full font-black text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl active:scale-95">
+            <button className="bg-white text-primary px-10 py-4 rounded-full font-black text-sm tracking-widest uppercase hover:bg-primary hover:text-white transition-all duration-300 shadow-2xl active:scale-95 cursor-pointer">
               Explore Destinations
             </button>
           </motion.div>
@@ -118,7 +118,7 @@ export default function Hero() {
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
+                className={`h-1.5 rounded-full transition-all duration-500 cursor-pointer ${
                   i === currentSlide ? 'w-12 bg-white' : 'w-4 bg-white/30 hover:bg-white/50'
                 }`}
               />
@@ -169,7 +169,7 @@ export default function Hero() {
                     <p className="text-[8px] font-bold text-on-surface-variant/40 uppercase tracking-widest">Starting from</p>
                     <p className="text-xl font-black text-primary">{slide.price}<span className="text-[10px] font-medium text-on-surface-variant/60 ml-1">/ NIGHT</span></p>
                   </div>
-                  <button className="bg-primary text-white text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 active:scale-95">
+                  <button className="bg-primary text-white text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 active:scale-95 cursor-pointer">
                     Book Now
                   </button>
                 </div>

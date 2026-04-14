@@ -19,7 +19,7 @@ export default function TrendingDestinations() {
   };
 
   return (
-    <section className="py-20 bg-surface-container-lowest">
+    <section id="destinations" className="py-20 bg-surface-container-lowest scroll-mt-24">
       <div className="max-w-7xl mx-auto px-8">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-16 relative">
@@ -43,34 +43,34 @@ export default function TrendingDestinations() {
           {/* Navigation Buttons - Side Positioned */}
           <button 
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-20 p-4 rounded-full bg-white shadow-2xl border border-on-surface/5 text-on-surface hover:bg-primary hover:text-white transition-all duration-300 active:scale-90 opacity-0 group-hover/container:opacity-100 hidden md:flex items-center justify-center"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-20 p-4 rounded-full bg-white shadow-2xl border border-on-surface/5 text-on-surface hover:bg-primary hover:text-white transition-all duration-300 active:scale-90 opacity-0 group-hover/container:opacity-100 hidden md:flex items-center justify-center cursor-pointer"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button 
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-20 p-4 rounded-full bg-white shadow-2xl border border-on-surface/5 text-on-surface hover:bg-primary hover:text-white transition-all duration-300 active:scale-90 opacity-0 group-hover/container:opacity-100 hidden md:flex items-center justify-center"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-20 p-4 rounded-full bg-white shadow-2xl border border-on-surface/5 text-on-surface hover:bg-primary hover:text-white transition-all duration-300 active:scale-90 opacity-0 group-hover/container:opacity-100 hidden md:flex items-center justify-center cursor-pointer"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
           <div 
             ref={scrollRef}
-            className="flex gap-8 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"
+            className="flex gap-4 md:gap-8 overflow-x-auto pt-6 pb-4 no-scrollbar snap-x snap-mandatory"
           >
             {DESTINATIONS.map((dest) => (
               <Link 
                 key={dest.id}
-                href={`/packages?destination=${encodeURIComponent(dest.name)}`}
-                className="flex-shrink-0 flex flex-col items-center gap-6 snap-start group"
+                href={`/packages?destination=${encodeURIComponent(dest.name)}&from=destinations`}
+                className="flex-shrink-0 flex flex-col items-center gap-4 snap-start group"
               >
                 <motion.div 
                   whileHover={{ y: -10 }}
-                  className="flex flex-col items-center gap-6"
+                  className="flex flex-col items-center gap-4"
                 >
                   {/* Circular Image Container */}
-                  <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-xl border-4 border-white group-hover:border-primary transition-colors duration-500">
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-xl border-4 border-white group-hover:border-primary transition-colors duration-500">
                     <Image
                       src={dest.image}
                       alt={dest.name}
@@ -81,7 +81,7 @@ export default function TrendingDestinations() {
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                   </div>
                   
-                  <h3 className="text-lg font-black text-on-surface tracking-tight group-hover:text-primary transition-colors">
+                  <h3 className="text-sm md:text-lg font-black text-on-surface tracking-tight group-hover:text-primary transition-colors">
                     {dest.name}
                   </h3>
                 </motion.div>
