@@ -9,6 +9,7 @@ import TrendingEscapes from '@/components/TrendingEscapes';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
+import PopularPlaces from '@/components/PopularPlaces';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <ContactSection />
+      <PopularPlaces />
       <Footer />
     </main>
   );

@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { Star, Clock, MapPin, Filter, X, ChevronRight, ChevronLeft, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { PACKAGES, DESTINATIONS, CATEGORIES } from '@/lib/data';
-import PackageCard from '@/components/PackageCard';
+import NewPackageCard from '@/components/NewPackageCard';
 
 function PackagesContent() {
   const searchParams = useSearchParams();
@@ -152,27 +152,27 @@ function PackagesContent() {
           {/* Packages Grid */}
           <div className="flex-1">
             <div className="mb-8 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="hidden lg:flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-on-surface-variant/5 font-black text-[10px] uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all group cursor-pointer"
-              >
-                {isSidebarOpen ? (
-                  <>
-                    <PanelLeftClose className="w-3.5 h-3.5" />
-                    Hide Filters
-                  </>
-                ) : (
-                  <>
-                    <PanelLeftOpen className="w-3.5 h-3.5" />
-                    Show Filters
-                  </>
-                )}
-              </button>
-              <p className="text-sm font-medium text-on-surface-variant">
-                Showing <span className="text-on-surface font-black">{filteredPackages.length}</span> packages
-              </p>
-            </div>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                  className="hidden lg:flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm border border-on-surface-variant/5 font-black text-[10px] uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all group cursor-pointer"
+                >
+                  {isSidebarOpen ? (
+                    <>
+                      <PanelLeftClose className="w-3.5 h-3.5" />
+                      Hide Filters
+                    </>
+                  ) : (
+                    <>
+                      <PanelLeftOpen className="w-3.5 h-3.5" />
+                      Show Filters
+                    </>
+                  )}
+                </button>
+                <p className="text-sm font-medium text-on-surface-variant">
+                  Showing <span className="text-on-surface font-black">{filteredPackages.length}</span> packages
+                </p>
+              </div>
               {(selectedDestination !== 'All' || selectedCategory !== 'All') && (
                 <button
                   onClick={() => updateFilters('All', 'All')}
@@ -185,12 +185,12 @@ function PackagesContent() {
 
             {filteredPackages.length > 0 ? (
               <div className={`grid gap-8 ${isSidebarOpen
-                  ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'
-                  : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3'
+                : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
                 }`}>
                 <AnimatePresence mode="popLayout">
                   {filteredPackages.map((pkg) => (
-                    <PackageCard
+                    <NewPackageCard
                       key={pkg.id}
                       pkg={pkg}
                       variant="grid"
@@ -249,8 +249,8 @@ function PackagesContent() {
                           setIsFilterOpen(false);
                         }}
                         className={`px-4 py-3 rounded-xl text-xs font-black transition-all border cursor-pointer ${selectedDestination === destName
-                            ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
-                            : 'text-on-surface-variant border-on-surface-variant/10'
+                          ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
+                          : 'text-on-surface-variant border-on-surface-variant/10'
                           }`}
                       >
                         {destName}
@@ -270,8 +270,8 @@ function PackagesContent() {
                           setIsFilterOpen(false);
                         }}
                         className={`px-4 py-3 rounded-xl text-xs font-black transition-all border cursor-pointer ${selectedCategory === catName
-                            ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
-                            : 'text-on-surface-variant border-on-surface-variant/10'
+                          ? 'bg-primary text-white border-primary shadow-md shadow-primary/20'
+                          : 'text-on-surface-variant border-on-surface-variant/10'
                           }`}
                       >
                         {catName}

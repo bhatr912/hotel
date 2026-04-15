@@ -1,31 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
-import { Star, Clock, MapPin } from 'lucide-react';
 import { PACKAGES } from '@/lib/data';
-import PackageCard from './PackageCard';
-import BookingDialog from './BookingDialog';
+import NewPackageCard from './NewPackageCard';
 
 export default function PopularPackages() {
-  const [selectedPackage, setSelectedPackage] = useState<typeof PACKAGES[0] | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  // Duplicate packages for infinite scroll
-  const duplicatedPackages = [...PACKAGES, ...PACKAGES];
-
-  const handleBook = (e: React.MouseEvent, pkg: typeof PACKAGES[0]) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setSelectedPackage(pkg);
-    setIsDialogOpen(true);
-  };
+  // Take the first 6 packages for the desktop view
+  const displayPackages = PACKAGES.slice(0, 6);
 
   return (
     <section className="py-20 bg-surface-container-lowest overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 mb-16">
-        <div className="flex flex-col items-center text-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-4 mb-4">
             <div className="h-px w-8 lg:w-12 bg-primary/30" />
             <span className="text-[10px] lg:text-xs font-black text-primary uppercase tracking-[0.3em]">
@@ -40,40 +29,38 @@ export default function PopularPackages() {
             Experience the magic of the valley with our handpicked tour packages, now at up to <span className="text-primary font-bold">45% off</span>.
           </p>
         </div>
-      </div>
 
-      {/* Infinite Scroll Container */}
-      <div className="relative flex">
-        <div
-          className="flex gap-6 px-4 animate-scroll-x hover:[animation-play-state:paused]"
-          onTouchStart={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
-          onTouchEnd={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
-        >
-          {duplicatedPackages.map((pkg, idx) => (
-            <PackageCard
-              key={`${pkg.id}-${idx}`}
-              pkg={pkg}
-              variant="scroll"
-              onBook={handleBook}
-              index={idx}
-            />
+        {/* Responsive Grid Layout with Explicit Hiding */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 justify-items-center">
+          {displayPackages.map((pkg, idx) => (
+            <div 
+              key={pkg.id} 
+              className={`w-full ${
+                idx === 1 ? 'hidden md:block' : // Card 2: Hidden on Mobile, Shows on Tablet+
+                idx >= 2 ? 'hidden lg:block' :  // Cards 3-6: Hidden on Mobile & Tablet, Shows on Desktop+
+                'block'                         // Card 1: Always visible
+              }`}
+            >
+              <NewPackageCard
+                pkg={pkg}
+                variant="grid"
+                index={idx}
+              />
+            </div>
           ))}
         </div>
+
+        {/* View All Packages Button */}
+        <div className="mt-16 flex justify-center">
+          <Link 
+            href="/packages"
+            className="bg-primary text-white px-10 py-4 rounded-full font-black uppercase tracking-widest text-sm hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 active:scale-95"
+          >
+            View All Packages
+          </Link>
+        </div>
+
       </div>
-
-
-      {/* Booking Dialog */}
-      <BookingDialog
-        isOpen={isDialogOpen}
-        onClose={() => setIsDialogOpen(false)}
-        packageData={selectedPackage ? {
-          title: selectedPackage.title,
-          destination: selectedPackage.destination,
-          duration: selectedPackage.duration,
-          price: selectedPackage.price,
-          rating: selectedPackage.rating,
-        } : null}
-      />
     </section>
   );
 }

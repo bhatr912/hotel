@@ -1,3 +1,10 @@
+export const POPULAR_PLACES = [
+  "Gulmarg", "Dal Lake", "Srinagar", "Pahalgam", "Sonamarg", 
+  "Vaishnodevi", "Amarnath", "Gurez valley", "Auru Valley", "Gondola", 
+  "Betaab Valley", "Aharbal", "Mughal Gardens", "Shankaracharya Temple", 
+  "Tulip Garden", "Wular Lake", "Sinthan Top", "Verinag", "Lal Chowk", "Doodhpathri"
+];
+
 export const DESTINATIONS = [
   {
     id: 1,
