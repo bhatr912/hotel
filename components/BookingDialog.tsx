@@ -9,6 +9,10 @@ interface BookingDialogProps {
   onClose: () => void;
   packageData?: {
     title: string;
+    destination: string;
+    duration: string;
+    price: string;
+    rating: number;
   } | null;
 }
 

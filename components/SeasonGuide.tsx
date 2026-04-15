@@ -107,7 +107,11 @@ export default function SeasonGuide() {
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         packageData={{
-          title: "Custom Kashmir Trip Plan"
+          title: "Custom Kashmir Trip Plan",
+          destination: "Kashmir",
+          duration: "Customizable",
+          price: "On Request",
+          rating: 4.8
         }}
       />
     </section>
