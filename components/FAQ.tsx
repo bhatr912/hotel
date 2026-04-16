@@ -24,7 +24,7 @@ export default function FAQ() {
             Frequently Asked <span className="text-primary italic">Questions</span>
           </h2>
           <p className="mt-4 text-on-surface-variant text-sm font-medium max-w-lg">
-            Everything you need to know before booking your tour package with Kashmir Port.
+            Everything you need to know before booking your tour package with Holiday Heed Kashmir.
           </p>
         </div>
 

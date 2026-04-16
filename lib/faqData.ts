@@ -1,6 +1,6 @@
 export const FAQ_DATA = [
   {
-    question: "What’s included in Kashmir Port’s Kashmir tour packages?",
+    question: "What's included in Holiday Heed Kashmir's Kashmir tour packages?",
     answer: "Most packages include accommodation, sightseeing as per itinerary, local transfers, and on-tour support. Inclusions can vary by package (budget/premium), so our team confirms the exact inclusions before you book."
   },
   {

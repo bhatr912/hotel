@@ -58,7 +58,7 @@ export default function TermsAndConditions() {
                         <div className="relative space-y-8">
                             <div className="p-5 rounded-xl bg-surface-container-low border border-on-surface-variant/5">
                                 <p className="text-base text-on-surface-variant leading-relaxed font-medium italic">
-                                    &quot;Welcome to Kashmir Port! By accessing our website and using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully before booking any tour packages.&quot;
+                                    &quot;Welcome to Holiday Heed Kashmir! By accessing our website and using our services, you agree to comply with and be bound by the following terms and conditions. Please read them carefully before booking any tour packages.&quot;
                                 </p>
                             </div>
 
@@ -119,7 +119,7 @@ export default function TermsAndConditions() {
                                         <h2 className="text-lg font-headline font-black text-on-surface tracking-tight">Alteration of Itinerary</h2>
                                     </div>
                                     <p className="text-on-surface-variant font-medium leading-relaxed text-sm pl-0 md:pl-12 mt-2 md:mt-0">
-                                        Kashmir Port reserves the right to alter itineraries due to any unforeseen circumstances like weather, road blocks, or political situations. We aim to provide suitable alternatives in such cases.
+                                        Holiday Heed Kashmir reserves the right to alter itineraries due to any unforeseen circumstances like weather, road blocks, or political situations. We aim to provide suitable alternatives in such cases.
                                     </p>
                                 </section>
 

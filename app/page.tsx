@@ -11,16 +11,18 @@ import FAQ from '@/components/FAQ';
 import ContactSection from '@/components/ContactSection';
 import PopularPlaces from '@/components/PopularPlaces';
 import Footer from '@/components/Footer';
+import CallButton from '@/components/CallButton';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <TrendingDestinations />
       <PopularPackages />
+      <TrendingDestinations />
       <CategoryPackages />
-      <TrendingEscapes />
+      {/* <TrendingEscapes /> */}
       <SeasonGuide />
       <WhyChooseUs />
       <Testimonials />
@@ -28,6 +30,8 @@ export default function Home() {
       <ContactSection />
       <PopularPlaces />
       <Footer />
+      <CallButton />
+      <WhatsAppButton />
     </main>
   );
 }

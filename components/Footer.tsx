@@ -1,6 +1,5 @@
 'use client';
 
-import { Facebook, Twitter, Instagram } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -13,27 +12,15 @@ export default function Footer() {
           <div className="space-y-8">
             <div className="flex flex-col items-start">
               <div className="w-20 h-14 bg-white rounded-xl flex items-center justify-center mb-2 shadow-sm border border-on-surface-variant/5">
-                <span className="text-primary font-black text-xl">KP</span>
+                <span className="text-primary font-black text-xl">HH</span>
               </div>
-              <p className="text-[10px] font-black text-on-surface uppercase tracking-widest">Kashmir Port</p>
-              <p className="text-[8px] text-on-surface-variant/60 italic font-medium">Discover Kashmir&apos;s Finest Journeys</p>
+              <p className="text-[10px] font-black text-on-surface uppercase tracking-widest">Holiday Heed</p>
+              <p className="text-[8px] text-on-surface-variant/60 italic font-medium">Kashmir & Ladakh Tours</p>
             </div>
 
             <p className="text-sm font-medium text-on-surface-variant leading-relaxed">
-              Experience unforgettable journeys with Kashmir Port. We specialize in crafting personalized travel experiences that create lasting memories.
+              Plan Kashmir & Ladakh Tours with Holiday Heed Kashmir. Get upto 30% OFF on all Tour Packages. We specialize in crafting personalized travel experiences that create lasting memories.
             </p>
-
-            <div className="flex gap-3">
-              {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                <Link
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-white border border-on-surface-variant/5 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
-                >
-                  <Icon className="w-4 h-4" />
-                </Link>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -72,8 +59,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {[
                 { name: 'Privacy Policy', href: '/privacy-policy' },
-                { name: 'Terms and Conditions', href: '/terms-and-conditions' },
-                { name: 'Refund/Cancellation', href: '#' }
+                { name: 'Terms and Conditions', href: '/terms-and-conditions' }
               ].map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-sm font-bold text-on-surface-variant/70 hover:text-primary transition-all flex items-center gap-2 group">
@@ -95,15 +81,43 @@ export default function Footer() {
             </div>
             <ul className="space-y-5">
               {[
-                { label: 'Call Us', value: '+91 84919 62370' },
-                { label: 'Email Us', value: 'info@kashmirport.com' },
-                { label: 'Visit Us', value: '3C complex, medical college road, karanagar, Srinagar, HK 190010' }
+                { 
+                  label: 'Call Us', 
+                  value: '+91 7006 787 978 / +91 9596 492 124',
+                  href: 'tel:+917006787978'
+                },
+                { 
+                  label: 'Email Us', 
+                  value: 'bookings@holidayheadkashmir.in',
+                  href: 'mailto:bookings@holidayheadkashmir.in'
+                },
+                { 
+                  label: 'WhatsApp', 
+                  value: '+91 7006 787 978',
+                  href: 'https://wa.me/+917006787978'
+                },
+                { 
+                  label: 'Visit Us', 
+                  value: 'Office No. 113,114, Khazir Complex, Munawar Link Road, Munawara Abad, Srinagar, Jammu & Kashmir India - 190001',
+                  href: null
+                }
               ].map((item, i) => (
                 <li key={i} className="space-y-1">
                   <p className="text-[9px] font-black text-on-surface-variant/30 uppercase tracking-widest">{item.label}</p>
-                  <p className="text-sm font-bold text-on-surface-variant leading-relaxed">
-                    {item.value}
-                  </p>
+                  {item.href ? (
+                    <a 
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="text-sm font-bold text-on-surface-variant leading-relaxed hover:text-primary transition-colors cursor-pointer block"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm font-bold text-on-surface-variant leading-relaxed">
+                      {item.value}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
@@ -115,7 +129,7 @@ export default function Footer() {
       <div className="relative py-8 border-t border-on-surface-variant/5 bg-surface-container-low overflow-hidden">
         <div className="max-w-7xl mx-auto px-8 relative z-10 flex justify-center">
           <p className="text-[10px] font-black text-on-surface-variant/40 uppercase tracking-[0.3em] text-center">
-            © Copyright {new Date().getFullYear()} - <span className="text-primary">Kashmir Port</span>
+            © Copyright {new Date().getFullYear()} - <span className="text-primary">Holiday Heed Kashmir</span>
           </p>
         </div>
       </div>

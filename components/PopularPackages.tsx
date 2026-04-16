@@ -26,7 +26,7 @@ export default function PopularPackages() {
             Popular <span className="text-primary italic">Kashmir Packages</span>
           </h2>
           <p className="mt-4 text-on-surface-variant text-sm font-medium max-w-lg">
-            Experience the magic of the valley with our handpicked tour packages, now at up to <span className="text-primary font-bold">45% off</span>.
+           Enjoy the beauty of the valley with our carefully selected travel packages, now at up to 30% off.
           </p>
         </div>
 

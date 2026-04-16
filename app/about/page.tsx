@@ -28,10 +28,10 @@ export default function AboutPage() {
               <div className="h-px w-8 lg:w-12 bg-primary/30" />
             </div>
             <h1 className="text-5xl lg:text-7xl font-serif text-on-surface tracking-tight">
-              About <span className="text-primary italic">Kashmir Port</span>
+              About <span className="text-primary italic">Holiday Heed Kashmir</span>
             </h1>
             <p className="mt-6 text-on-surface-variant text-[13px] md:text-sm font-medium max-w-2xl">
-              Welcome to Kashmir Port! We are dedicated to providing you with the most authentic and memorable travel experiences in the valley.
+              Welcome to Holiday Heed Kashmir! We are dedicated to providing you with the most authentic and memorable travel experiences in the valley.
             </p>
           </div>
         </div>
@@ -90,9 +90,9 @@ export default function AboutPage() {
               <div>
                 
                 <div className="space-y-4 text-on-surface-variant font-medium leading-relaxed">
-                  <p className="text-base text-primary font-black uppercase tracking-widest">Welcome to Kashmir Port!</p>
+                  <p className="text-base text-primary font-black uppercase tracking-widest">Welcome to Holiday Heed Kashmir!</p>
                   <p className="text-sm">
-                    At Kashmir Port, we believe travel is not only about visiting a place — it&apos;s about feeling its soul, living its stories, and returning with memories that stay etched in your heart. Every experience we create is thoughtfully curated to turn your dream of exploring Kashmir into a journey you&apos;ll treasure forever.
+                    At Holiday Heed Kashmir, we believe travel is not only about visiting a place — it&apos;s about feeling its soul, living its stories, and returning with memories that stay etched in your heart. Every experience we create is thoughtfully curated to turn your dream of exploring Kashmir into a journey you&apos;ll treasure forever.
                   </p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                   Who We Are
                 </h4>
                 <p className="text-on-surface-variant font-medium leading-relaxed text-sm">
-                  Your Local & Trusted Travel Partner. Kashmir Port is more than a travel company — we are your trusted local partner in Kashmir. With on-ground expertise and a passionate team of travel professionals, we manage every detail from planning to execution, ensuring a stress-free, authentic, and unforgettable journey.
+                  Your Local & Trusted Travel Partner. Holiday Heed Kashmir is more than a travel company — we are your trusted local partner in Kashmir. With on-ground expertise and a passionate team of travel professionals, we manage every detail from planning to execution, ensuring a stress-free, authentic, and unforgettable journey.
                 </p>
               </div>
 

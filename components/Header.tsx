@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import BookingDialog from './BookingDialog';
 
 const NAV_ITEMS = [
   { name: 'Packages', href: '/packages' },
@@ -18,6 +20,7 @@ const NAV_ITEMS = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const pathname = usePathname();
 
@@ -72,8 +75,15 @@ export default function Header() {
     <>
       <nav className={`fixed top-0 w-full z-[60] transition-all duration-300 ${shouldShowSolid ? 'bg-white shadow-sm py-3' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 w-full">
-          <Link href="/" className={`text-xl md:text-2xl font-black tracking-tighter transition-colors duration-300 ${shouldShowSolid ? 'text-primary' : 'text-white'}`}>
-            Kashmir Port
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo/logo-dark.png"
+              alt="Holiday Heed Kashmir"
+              width={150}
+              height={50}
+              className="h-auto w-auto max-w-[120px] md:max-w-[150px]"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -105,7 +115,7 @@ export default function Header() {
           </div>
 
           <div className="flex items-center space-x-2 md:space-x-4">
-            <button className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full font-bold text-xs md:text-sm tracking-tight transition-all duration-300 shadow-md active:scale-95 whitespace-nowrap ${shouldShowSolid ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-primary hover:bg-white/90'}`}>
+            <button onClick={() => setIsBookingOpen(true)} className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full font-bold text-xs md:text-sm tracking-tight transition-all duration-300 shadow-md active:scale-95 whitespace-nowrap cursor-pointer ${shouldShowSolid ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-primary hover:bg-white/90'}`}>
               Book Now
             </button>
             <button
@@ -160,12 +170,14 @@ export default function Header() {
               {/* Bottom Info in Sidebar */}
               <div className="absolute bottom-10 left-8 right-8">
                 <p className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant/40 mb-2">Support</p>
-                <p className="text-sm font-bold text-on-surface">info@kashmirport.com</p>
+                <p className="text-sm font-bold text-on-surface">bookings@holidayheadkashmir.in</p>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
+
+      <BookingDialog isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </>
   );
 }
