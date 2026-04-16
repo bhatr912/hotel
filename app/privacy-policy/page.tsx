@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
                         <div className="relative space-y-8">
                             <div className="p-5 rounded-xl bg-surface-container-low border border-on-surface-variant/5">
                                 <p className="text-base text-on-surface-variant leading-relaxed font-medium italic">
-                                    &quot;This Privacy Policy explains how Kashmir Port (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, shares, and protects your information when you visit our website, submit an enquiry, or book a tour package with us. By using our website or services, you agree to the practices described here.&quot;
+                                    &quot;This Privacy Policy explains how Holiday Heed Kashmir (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, shares, and protects your information when you visit our website, submit an enquiry, or book a tour package with us. By using our website or services, you agree to the practices described here.&quot;
                                 </p>
                             </div>
 
@@ -69,7 +69,7 @@ export default function PrivacyPolicy() {
                                         <h2 className="text-lg font-headline font-black text-on-surface tracking-tight">Who we are</h2>
                                     </div>
                                     <p className="text-on-surface-variant font-medium leading-relaxed text-sm pl-0 md:pl-12 mt-2 md:mt-0">
-                                        Kashmir Port is a tour and travel service provider based in Jammu & Kashmir, India. We help travellers plan and book packages, hotels, transport, activities, and related travel services through our team and trusted partner vendors.
+                                        Holiday Heed Kashmir is a tour and travel service provider based in Jammu & Kashmir, India. We help travellers plan and book packages, hotels, transport, activities, and related travel services through our team and trusted partner vendors.
                                     </p>
                                 </section>
 

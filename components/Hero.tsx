@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Static Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1623684003870-fca853da2d21?q=80&w=2134&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1680701529599-1a9c712fd9b9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Beautiful Kashmir Background"
           fill
           className="object-cover"
@@ -38,7 +38,7 @@ export default function Hero() {
               <span className="text-white text-[10px] font-black uppercase tracking-wider">Offer</span>
             </div>
             <span className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.25em]">
-              Save upto 45% on All Packages
+              Save upto 30% on All Packages
             </span>
           </motion.div>
 
@@ -50,15 +50,15 @@ export default function Hero() {
             className="space-y-4"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white leading-[1.1] tracking-tight drop-shadow-2xl">
-              Best <span className="text-white italic">Kashmir</span> Tour Package<br />
-              Book Your Dream Tour<br />
+              Top <span className="text-blue-300 italic">Kashmir</span> Tour Package<br />
+              Reserve Your <span className="text-blue-300">Perfect Trip</span><br />
               <span className="text-lg sm:text-xl md:text-2xl font-sans font-medium tracking-normal text-white/90">
-                4N/5D Starting ₹12,500 only
+                4N/5D Starting <span className="text-blue-300">₹12,500</span> only
               </span>
             </h1>
 
             <p className="text-white/80 text-sm md:text-base font-medium drop-shadow-md max-w-lg leading-relaxed">
-              Experience the magic of the valley with our handpicked tour packages, now at <span className="text-white font-bold">Best Price Guaranteed!</span>
+Discover the beauty of the valley with our specially curated tours, now at the best price assurance!
             </p>
           </motion.div>
 
@@ -99,7 +99,7 @@ export default function Hero() {
                 <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-white font-bold text-[10px] xs:text-xs sm:text-sm md:text-sm tracking-wide">4.6/5 (30.6K+ Reviews)</span>
+            <span className="text-white font-bold text-[10px] xs:text-xs sm:text-sm md:text-sm tracking-wide">4.5/5 (147+ Reviews)</span>
             <svg viewBox="0 0 24 24" className="w-7 h-7 ml-1">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
               <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />

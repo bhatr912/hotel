@@ -9,8 +9,7 @@ import {
   Building2, 
   Car, 
   ChevronsRight,
-  Phone,
-  MessageCircle
+  Phone
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PACKAGES } from '@/lib/data';
@@ -170,17 +169,29 @@ export default function NewPackageCard({ pkg, variant = 'grid', onBook, index }:
         {/* 7. Action Buttons */}
         <div className="grid grid-cols-3 gap-1.5 mt-1 shrink-0">
           <button 
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); console.log('Call triggered'); }}
+            onClick={(e) => { 
+              e.preventDefault(); 
+              e.stopPropagation(); 
+              window.location.href = 'tel:+917006787978';
+            }}
             className="bg-[#f59e0b] hover:bg-[#d97706] text-white py-2 rounded-lg text-[10px] font-black tracking-wide transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95 cursor-pointer"
           >
             <Phone className="w-3 h-3" /> Call
           </button>
           
           <button 
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); console.log('Whatsapp triggered'); }}
+            onClick={(e) => { 
+              e.preventDefault(); 
+              e.stopPropagation(); 
+              window.open('https://wa.me/+917006787978', '_blank');
+            }}
             className="bg-[#16a34a] hover:bg-[#15803d] text-white py-2 rounded-lg text-[10px] font-black tracking-wide transition-colors flex items-center justify-center gap-1 shadow-sm active:scale-95 cursor-pointer"
           >
-            <MessageCircle className="w-3 h-3" /> Chat
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+              alt="WhatsApp"
+              className="w-3.5 h-3.5"
+            /> Chat
           </button>
           
           <button 

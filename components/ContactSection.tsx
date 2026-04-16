@@ -37,28 +37,28 @@ export default function ContactSection() {
                   <div>
                     <h4 className="font-black text-xs lg:text-sm uppercase tracking-wider mb-1">Office Address</h4>
                     <p className="text-white/80 text-[11px] lg:text-xs leading-relaxed max-w-[200px]">
-                      3C complex, Karanagar, Srinagar, JK 190010
+                      Office No. 113,114, Khazir Complex, Munawar Link Road, Munawara Abad, Srinagar, Jammu & Kashmir India - 190001
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 lg:gap-4 group">
+                <div className="flex items-start gap-3 lg:gap-4 group cursor-pointer" onClick={() => window.location.href = 'mailto:bookings@holidayheadkashmir.in'}>
                   <div className="p-2 lg:p-2.5 bg-white/10 rounded-xl backdrop-blur-md shrink-0 group-hover:bg-white/20 transition-colors">
                     <Mail className="w-4 h-4 lg:w-5 lg:h-5" />
                   </div>
                   <div>
                     <h4 className="font-black text-xs lg:text-sm uppercase tracking-wider mb-1">Email Support</h4>
-                    <p className="text-white/80 text-[11px] lg:text-xs">info@kashmirport.com</p>
+                    <p className="text-white/80 text-[11px] lg:text-xs hover:text-white transition-colors">bookings@holidayheadkashmir.in</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 lg:gap-4 group">
+                <div className="flex items-start gap-3 lg:gap-4 group cursor-pointer" onClick={() => window.location.href = 'tel:+917006787978'}>
                   <div className="p-2 lg:p-2.5 bg-white/10 rounded-xl backdrop-blur-md shrink-0 group-hover:bg-white/20 transition-colors">
                     <Phone className="w-4 h-4 lg:w-5 lg:h-5" />
                   </div>
                   <div>
                     <h4 className="font-black text-xs lg:text-sm uppercase tracking-wider mb-1">Direct Call</h4>
-                    <p className="text-white/80 text-[11px] lg:text-xs">+91 84919 62370</p>
+                    <p className="text-white/80 text-[11px] lg:text-xs hover:text-white transition-colors">+91 7006 787 978 / +91 9596 492 124</p>
                   </div>
                 </div>
               </div>

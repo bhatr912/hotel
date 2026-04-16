@@ -55,10 +55,10 @@ export default function SeasonGuide() {
             <div className="h-px w-8 lg:w-12 bg-primary/30" />
           </div>
           <h2 className="text-4xl lg:text-6xl font-serif text-on-surface tracking-tight">
-            Best Season to <span className="text-primary italic">Visit Kashmir</span>
+            Ideal Time to <span className="text-primary italic">Explore Kashmir</span>
           </h2>
           <p className="mt-4 text-on-surface-variant text-sm font-medium max-w-lg">
-            Choose your perfect vibe — flowers, treks, harvest views, or snow adventures.
+         Pick your perfect vibe — blooms, hikes, harvest scenes, or snowy thrills.
           </p>
         </div>
 
